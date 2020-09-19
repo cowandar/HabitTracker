@@ -1,7 +1,5 @@
 package Entities;
 
-import Entities.Habit;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +16,7 @@ public class User extends Habit {
         return habitIndex;
     }
 
-    public void setHabitIndex(int habitIndex) {
+    public void setHabitIndex(Integer habitIndex) {
         this.habitIndex = habitIndex;
     }
 
@@ -56,6 +54,11 @@ public class User extends Habit {
         habit.setDescription(inputDescription());
 
         habitList.add(habit);
+    }
+
+    public void selectHabit(){
+        System.out.println("SELECT A HABIT");
+
     }
 
 

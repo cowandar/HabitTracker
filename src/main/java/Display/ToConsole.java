@@ -17,6 +17,8 @@ public class ToConsole {
     }
 
     public void mainMenu(){
+        user.setHabitIndex(null);
+
         System.out.println("Main Menu");
         System.out.println("1.View Habits");
         System.out.println("2.Add Habits");
@@ -26,7 +28,7 @@ public class ToConsole {
 
         switch (choice){
             case 1:
-                //Todo add function here for view habits
+                viewHabitsOptions();
                 mainMenu();
             case 2:
                 user.addHabit();
@@ -38,7 +40,38 @@ public class ToConsole {
         }
     }
 
+    private void viewHabitsOptions() {
+        printAllHabitsTitles();
+        System.out.println("OPTIONS");
+        switch (choice) {
+            case 1:
+                // TODO Edit habit function
+                selectHabit();
 
+
+            case 2:
+                //TODO Delete Habit function
+            case 3:
+                //TOdo
+                // Back to main menu
         }
     }
-}
+
+
+    private void printAllHabitsTitles(){
+        for (int i = 0; user.getHabitList().size() > i; i++){
+            System.out.println("Habits:");
+            System.out.println(i + ":- " + user.getHabitList().get(i).getTitle());
+        }
+    }
+
+    private void selectHabit(){
+        System.out.println("Select a Habit");
+        printAllHabitsTitles();
+        user.setHabitIndex(choice);
+        System.out.println("Habit " + user.getHabitIndex() + " Selected");
+            }
+
+        }
+
+
