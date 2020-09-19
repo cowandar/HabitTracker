@@ -56,11 +56,10 @@ public class User extends Habit {
         habitList.add(habit);
     }
 
-    public void selectHabit(){
-        System.out.println("SELECT A HABIT");
-
+    public void deleteHabit(){
+        habitList.remove(habitIndex);
+        setHabitIndex(null);
     }
-
 
 }
 

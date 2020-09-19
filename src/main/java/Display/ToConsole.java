@@ -45,16 +45,51 @@ public class ToConsole {
         System.out.println("OPTIONS");
         switch (choice) {
             case 1:
-                // TODO Edit habit function
+                System.out.println("Edit Habit");
                 selectHabit();
+                System.out.println("Edit Options");
+                System.out.println("1: Edit Title");
+                System.out.println("2: Edit Description");
+
+                switch (choice){
+                    case 1:
+                        System.out.println("Edit Title");
+                        System.out.println("Enter new Title");
+                        user.getHabitList().get(user.getHabitIndex()).setTitle(scanner.nextLine());
+                        break;
+                    case 2:
+                        System.out.println("Edit Description");
+                        System.out.println("Enter new Description");
+                        user.getHabitList().get(user.getHabitIndex()).setDescription(scanner.nextLine());
+                        break;
+                }
+
+
 
 
             case 2:
-                //TODO Delete Habit function
+                System.out.println("Delete Habit");
+                selectHabit();
+                System.out.println("Are you sure you want to delete the following Habit");
+                System.out.println(user.getHabitList().get(user.getHabitIndex()).getTitle());
+                System.out.println("Press 1 for Yes, delete this habit");
+                System.out.println("Press 2 for No");
+
+                switch (choice){
+                    case 1:
+                        user.deleteHabit();
+                    case 2:
+                        //Go back to previous menu
+                        user.setHabitIndex(null);
+                        viewHabitsOptions();
+                }
+
             case 3:
                 //TOdo
                 // Back to main menu
         }
+
+        mainMenu();
     }
 
 
