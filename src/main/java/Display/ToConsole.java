@@ -1,6 +1,7 @@
 package Display;
 
 import Entities.User;
+import org.graalvm.compiler.debug.CSVUtil;
 
 import java.util.Scanner;
 
@@ -22,8 +23,7 @@ public class ToConsole {
         System.out.println("Main Menu");
         System.out.println("1.View Habits");
         System.out.println("2.Add Habits");
-        System.out.println("3.Edit Habits");
-        System.out.println("4.Save Habits");
+        System.out.println("3.Save Habits");
 
 
         switch (choice){
@@ -34,8 +34,6 @@ public class ToConsole {
                 user.addHabit();
                 mainMenu();
             case 3:
-                //TODO add function here for Edit Habits
-            case 4:
                 //TODO add function here for Save Habits
         }
     }
@@ -43,6 +41,10 @@ public class ToConsole {
     private void viewHabitsOptions() {
         printAllHabitsTitles();
         System.out.println("OPTIONS");
+        System.out.println("1: Edit Habit");
+        System.out.println("2: Delete Habit");
+        System.out.println("3: Exit to Main Menu");
+
         switch (choice) {
             case 1:
                 System.out.println("Edit Habit");
@@ -50,7 +52,7 @@ public class ToConsole {
                 System.out.println("Edit Options");
                 System.out.println("1: Edit Title");
                 System.out.println("2: Edit Description");
-
+                System.out.println("3: Go back");
                 switch (choice){
                     case 1:
                         System.out.println("Edit Title");
@@ -62,9 +64,9 @@ public class ToConsole {
                         System.out.println("Enter new Description");
                         user.getHabitList().get(user.getHabitIndex()).setDescription(scanner.nextLine());
                         break;
+                    default:
+                        mainMenu();
                 }
-
-
 
 
             case 2:
@@ -84,9 +86,8 @@ public class ToConsole {
                         viewHabitsOptions();
                 }
 
-            case 3:
-                //TOdo
-                // Back to main menu
+            default:
+                mainMenu();
         }
 
         mainMenu();
