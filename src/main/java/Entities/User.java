@@ -1,15 +1,21 @@
 package Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class User extends Habit {
+public class User{
 
-
-    private int habitIndex;
-    private int todayInt;
     public static ArrayList<Habit> habitList;
-    private Scanner scanner = new Scanner(System.in);
+
+    @JsonIgnore
+    private int habitIndex;
+    @JsonIgnore
+    private int todayInt;
+
+    private final Scanner scanner = new Scanner(System.in);
 
 
     public int getHabitIndex() {
@@ -33,7 +39,7 @@ public class User extends Habit {
     }
 
     public void setHabitList(ArrayList<Habit> habitList) {
-        this.habitList = habitList;
+        User.habitList = habitList;
     }
 
     private String inputTitle(){

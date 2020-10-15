@@ -1,8 +1,9 @@
 package Display;
 
-import Entities.User;
-import org.graalvm.compiler.debug.CSVUtil;
 
+import Entities.User;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ToConsole {
@@ -10,15 +11,15 @@ public class ToConsole {
 
     static Scanner scanner = new Scanner(System.in);
     User user = new User();
-    int choice = scanner.nextInt();
+
 
     public void welcome(){
         System.out.println("Welcome to Habitual");
         System.out.println("You're habit tracking app");
     }
 
-    public void mainMenu(){
-        user.setHabitIndex(null);
+    public void mainMenu() throws IOException {
+
 
         System.out.println("Main Menu");
         System.out.println("1.View Habits");
@@ -26,7 +27,7 @@ public class ToConsole {
         System.out.println("3.Save Habits");
 
 
-        switch (choice){
+        switch (scanner.nextInt()){
             case 1:
                 viewHabitsOptions();
                 mainMenu();
@@ -34,18 +35,19 @@ public class ToConsole {
                 user.addHabit();
                 mainMenu();
             case 3:
-                //TODO add function here for Save Habits
+                Data.WriteToJson.writeToJson(user);
+                mainMenu();
         }
     }
 
-    private void viewHabitsOptions() {
+    private void viewHabitsOptions() throws IOException {
         printAllHabitsTitles();
         System.out.println("OPTIONS");
         System.out.println("1: Edit Habit");
         System.out.println("2: Delete Habit");
         System.out.println("3: Exit to Main Menu");
 
-        switch (choice) {
+        switch (scanner.nextInt()) {
             case 1:
                 System.out.println("Edit Habit");
                 selectHabit();
@@ -53,7 +55,7 @@ public class ToConsole {
                 System.out.println("1: Edit Title");
                 System.out.println("2: Edit Description");
                 System.out.println("3: Go back");
-                switch (choice){
+                switch (scanner.nextInt()){
                     case 1:
                         System.out.println("Edit Title");
                         System.out.println("Enter new Title");
@@ -68,7 +70,6 @@ public class ToConsole {
                         mainMenu();
                 }
 
-
             case 2:
                 System.out.println("Delete Habit");
                 selectHabit();
@@ -77,7 +78,7 @@ public class ToConsole {
                 System.out.println("Press 1 for Yes, delete this habit");
                 System.out.println("Press 2 for No");
 
-                switch (choice){
+                switch (scanner.nextInt()){
                     case 1:
                         user.deleteHabit();
                     case 2:
@@ -104,7 +105,7 @@ public class ToConsole {
     private void selectHabit(){
         System.out.println("Select a Habit");
         printAllHabitsTitles();
-        user.setHabitIndex(choice);
+        user.setHabitIndex(scanner.nextInt());
         System.out.println("Habit " + user.getHabitIndex() + " Selected");
             }
 

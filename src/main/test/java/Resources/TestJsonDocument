@@ -1,14 +1,1 @@
-{
-  "habitList": [
-    {
-      "title" : "Title Test 0",
-      "description" : "Description Test, no days checked",
-      "dailyChecklist" : [0, 0, 0, 0, 0, 0, 0]
-    },
-    {
-      "title" : "Title Test 1  ",
-      "description" : "Description Test, all days checked",
-      "dailyChecklist" : [1,1,1,1,1,1,1]
-    }
-  ]
-}
+{"habitList":[{"title":"Title Test 0","description":"Description Test, no days checked","dailyChecklist":[false,false,false,false,false,false,false]},{"title":"Title Test 1  ","description":"Description Test, all days checked","dailyChecklist":[true,true,true,true,true,true,true]}]}

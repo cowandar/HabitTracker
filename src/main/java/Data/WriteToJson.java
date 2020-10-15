@@ -1,28 +1,27 @@
 package Data;
 
 import Entities.User;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
 
 public class WriteToJson {
 
-    WriteToJson(){
 
+    WriteToJson(){
     }
 
 
-    public void OverwriteToJson(User user) throws JsonProcessingException {
+    public static void writeToJson(User user) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+        File file = new File("src/main/test/java/Resources/TestJsonDocument");
+        mapper.writeValue(new FileOutputStream(file),  user);
 
-
-            String json = mapper.writeValueAsString((new User()));
-
-            Files.write(new File("src/main/java/Data/DataJSON").toPath(), Arrays.asList(json), StandardOpenOption.CREATE);
-
+//        mapper.writeValue(file), User.habitList);
+        //TODO TEST THIS
     }
 }
